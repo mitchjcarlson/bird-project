@@ -6,5 +6,7 @@ public class HelloWorld {
 		System.out.println("Trying to push from eclipse");
 		System.out.println("Commit from eclipse works, but not sync to server yet");
 		System.out.println("Okay, commit/push from my laptop");
+		SomeOtherClass c = new SomeOtherClass();
+		c.printMsg();
 	}
 }
