@@ -3,6 +3,7 @@ public class HelloWorld {
 	public static void main(String[] args) {
 		
 		// Drew - Successful push 
+		// Drew - Showing my username w/ pushes as 'jon3d' now
 		
 		System.out.println("Hello Git!");
 		System.out.println("This is a little change");
