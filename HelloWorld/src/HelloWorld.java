@@ -2,7 +2,7 @@
 public class HelloWorld {
 	public static void main(String[] args) {
 		
-		// Drew - Successful push w/o commiting to local repo
+		// Drew - Successful push 
 		
 		System.out.println("Hello Git!");
 		System.out.println("This is a little change");
