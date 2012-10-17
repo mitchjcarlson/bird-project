@@ -9,6 +9,7 @@ public class HelloWorld {
         System.out.println("Okay, let's see if Doug can commit/push now.");
         System.out.println("Mitch is able to commit/push");
         System.out.println("Mitch, testing eclipse commit/push to github");
+        // comment
 		SomeOtherClass c = new SomeOtherClass();
 		c.printMsg();
 	}
