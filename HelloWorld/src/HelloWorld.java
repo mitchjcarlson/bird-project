@@ -17,5 +17,7 @@ public class HelloWorld {
         // comment
 		SomeOtherClass c = new SomeOtherClass();
 		c.printMsg();
+		
+		System.out.println("Suck it GIT!");
 	}
 }
