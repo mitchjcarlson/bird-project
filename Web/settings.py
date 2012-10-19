@@ -1,4 +1,4 @@
-# Django settings for myproject project.
+# Django settings for bird project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -14,12 +14,24 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'sqlite3'
-DATABASE_NAME = os.path.join(PROJECT_DIR, 'project.db')
-DATABASE_USER = ''
-DATABASE_PASSWORD = ''
-DATABASE_HOST = ''
-DATABASE_PORT = ''
+####################################################################
+##     PRIVATE SETTINGS HAVE BEEN RELOCATED TO A SEPARATE FILE    ##
+##         SO THAT THEY AREN'T PUBLICLY VIEWABLE ON GITHUB        ##
+####################################################################
+
+# DATABASE_ENGINE = 'sqlite3'
+# DATABASE_NAME = os.path.join(PROJECT_DIR, 'project.db')
+# DATABASE_USER = ''
+# DATABASE_PASSWORD = ''
+# DATABASE_HOST = ''
+# DATABASE_PORT = ''
+
+# Make this unique, and don't share it with anybody.
+# SECRET_KEY = 'random-string-of-ascii'
+
+####################################################################
+##                     END OF PRIVATE SETTINGS                    ##
+####################################################################
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
