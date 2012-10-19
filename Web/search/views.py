@@ -10,5 +10,12 @@ def home(request):
             {'title': title, 'content': content},
             context_instance=RequestContext(request))
 
+
+def bootstrap(request):
+    return render_to_response('bootstrap.html',
+            {},
+            context_instance=RequestContext(request))
+
+
 def test(request):
     return HttpResponse("Hello world")

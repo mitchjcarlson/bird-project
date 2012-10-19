@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from search.views import home
+from search.views import home, bootstrap
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', home, name='home'),
     # url(r'^myproject/', include('myproject.foo.urls')),
+    url(r'^bootstrap/', bootstrap),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
