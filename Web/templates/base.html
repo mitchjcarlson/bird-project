@@ -1,137 +1,146 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>{% block title %}Bothell Birder{% endblock %}</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>{% block title %}Bothell Birder{% endblock %}</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
 
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
-    <style>
-        body {
-            padding-top: 40px;
-            padding-bottom: 40px;
-        }
-    </style>
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.min.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/main.css">
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
+  <style>
+    body {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+  </style>
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.min.css">
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/main.css">
 
-    <script src="{{ STATIC_URL }}js/vendor/modernizr-2.6.1.min.js"></script>
+  <script src="{{ STATIC_URL }}js/vendor/modernizr-2.6.1.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="span10 offset1">
-        {% block header %}
-            <div class="row">
-                <div class="span5">
-                    <img src="{{ STATIC_URL }}img/logo.png" width="380" height="80" alt="Bothell Birder" />
-                </div>
-                <div class="span5">
-                    <div align="right">
-                    <form class="form-inline">
-                      <input type="text" class="input-xlarge" placeholder="Describe a bird...">
-                      <button type="submit" class="btn">Find Bird</button>
-                    </form>
-                    </div>
-                </div>
-            </div>
-
-            <hr>
-
-            <div class="navbar">
-              <div class="navbar-inner">
-                <!-- <a class="brand" href="#">Bothell Birder</a> -->
-                <ul class="nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#">Link</a></li>
-                  <li><a href="#">Link</a></li>
-                </ul>
-              </div>
-            </div>
-        {% endblock %}
-
-        {% block content %}
-            <div id="myCarousel" class="carousel slide">
-              <!-- Carousel items -->
-              <div class="carousel-inner">
-                <div class="active item">
-                    <img src="{{ STATIC_URL }}/img/samples/sample1.jpg" alt="">
-                    <div class="carousel-caption">
-                      <h4>First Thumbnail label</h4>
-                      <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="{{ STATIC_URL }}/img/samples/sample2.jpg" alt="">
-                    <div class="carousel-caption">
-                      <h4>Second Thumbnail label</h4>
-                      <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="{{ STATIC_URL }}/img/samples/sample3.jpg" alt="">
-                    <div class="carousel-caption">
-                      <h4>Third Thumbnail label</h4>
-                      <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="{{ STATIC_URL }}/img/samples/sample4.jpg" alt="">
-                    <div class="carousel-caption">
-                      <h4>Fourth Thumbnail label</h4>
-                      <p>Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Aenean lacinia bibendum nulla sed consectetur. Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue.</p>
-                    </div>
-                </div>
-              </div>
-              <!-- Carousel nav -->
-              <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-              <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-            </div>
-
-            <!-- <h3>Platform:</h3> -->
-            <p class="lead">Platform:</p>
-            <div class="tabbable"> <!-- Only required for left/right tabs -->
-              <ul class="nav nav-tabs">
-                <li class="active"><a href="#tab1" data-toggle="tab">Web</a></li>
-                <li><a href="#tab2" data-toggle="tab">Desktop</a></li>
-                <li><a href="#tab3" data-toggle="tab">Android</a></li>
-              </ul>
-              <div class="tab-content">
-                <div class="tab-pane active" id="tab1">
-                  <p>I'm in Section 1.</p>
-                  <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                </div>
-                <div class="tab-pane" id="tab2">
-                  <p>Howdy, I'm in Section 2.</p>
-                  <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum. Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum.</p>
-                </div>
-                <div class="tab-pane" id="tab3">
-                  <p>Bam! Section 3.</p>
-                  <p>Donec id elit non mi porta gravida at eget metus. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-              </div>
-            </div>
-
-            <p class="lead">Have you heard?</p>
-            <iframe width="420" height="315" src="http://www.youtube.com/embed/2WNrx2jq184" frameborder="0" allowfullscreen></iframe>
-        {% endblock %}
-
-        {% block footer %}
-            <hr>
-            <!-- <div class="row">
-                <div class="span10">
-                    <p align="center">Duis mollis, est non commodo luctus. This should be some type of footer.</p>
-                </div>
-            </div> -->
-        {% endblock %}
+  <div class="container">
+    {% block header %}
+    <!-- Logo -->
+    <div class="row">
+      <img src="{{ STATIC_URL }}img/logo.png" width="381" height="74" alt="Bothell Birder" />
+      <hr>
     </div>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="{{ STATIC_URL }}js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+    <!-- Nav Bar -->
+    <div class="row">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
 
-    <script src="{{ STATIC_URL }}js/vendor/bootstrap.min.js"></script>
+    {% block content %}
+    <!-- Carousel -->
+    <div class="row">
+      <div id="myCarousel" class="carousel slide">
+        <!-- Carousel items -->
+        <div class="carousel-inner">
+          <div class="active item">
+              <img src="{{ STATIC_URL }}/img/samples/sample1.jpg" alt="">
+              <div class="carousel-caption">
+                <h4>First Thumbnail label</h4>
+                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+              </div>
+          </div>
+          <div class="item">
+              <img src="{{ STATIC_URL }}/img/samples/sample2.jpg" alt="">
+              <div class="carousel-caption">
+                <h4>Second Thumbnail label</h4>
+                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+              </div>
+          </div>
+          <div class="item">
+              <img src="{{ STATIC_URL }}/img/samples/sample3.jpg" alt="">
+              <div class="carousel-caption">
+                <h4>Third Thumbnail label</h4>
+                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.</p>
+              </div>
+          </div>
+          <div class="item">
+              <img src="{{ STATIC_URL }}/img/samples/sample4.jpg" alt="">
+              <div class="carousel-caption">
+                <h4>Fourth Thumbnail label</h4>
+                <p>Donec ullamcorper nulla non metus auctor fringilla. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+              </div>
+          </div>
+        </div>
+        <!-- Carousel nav -->
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+      </div>
+    </div>
 
-    <script src="{{ STATIC_URL }}js/main.js"></script>
+    <!-- Search Box -->
+    <div class="row">
+      <div class="well" align="center">
+        <p class="lead">Have you heard? Bird is the word!</p>
+        <form class="form-inline">
+          <input type="text" class="input-xxlarge" placeholder="Describe a bird...">
+          <button type="submit" class="btn">Find That Bird</button>
+        </form>
+      </div>
+    </div>
+
+     <!-- Platform Tabs -->
+    <div class="row">
+      <!-- <h3>Platform:</h3> -->
+      <p class="lead">Platform:</p>
+      <div class="tabbable"> <!-- Only required for left/right tabs -->
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#tab1" data-toggle="tab">Web</a></li>
+          <li><a href="#tab2" data-toggle="tab">Desktop</a></li>
+          <li><a href="#tab3" data-toggle="tab">Android</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="tab1">
+            <p>I'm in Section 1.</p>
+            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+          </div>
+          <div class="tab-pane" id="tab2">
+            <p>Howdy, I'm in Section 2.</p>
+            <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum. Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum.</p>
+          </div>
+          <div class="tab-pane" id="tab3">
+            <p>Bam! Section 3.</p>
+            <p>Donec id elit non mi porta gravida at eget metus. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="lead">Have you heard?</p>
+            <iframe width="420" height="315" src="http://www.youtube.com/embed/2WNrx2jq184" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+
+    {% block footer %}
+    <div class="row">
+      <hr>
+      <div class="span2 offset3" align="center"><a href="https://github.com/Jon3d/bird-project"><img src="{{ STATIC_URL }}img/github.png" alt="Powered by GitHub" width="140" height="70" border="0" /></a></div>
+      <div class="span2" align="center"><a href="http://djangoproject.com"><img src="{{ STATIC_URL }}img/django.png" alt="Powered by Django" width="140" height="70" border="0" /></a></div>
+      <div class="span1" align="center"><a href="http://android.com"><img src="{{ STATIC_URL }}img/android.png" alt="Android" width="80" height="70" border="0" /></a></div>
+      <div class="span2" align="center"><a href="http://python.org"><img src="{{ STATIC_URL }}img/python.png" alt="Powered by Python" width="140" height="70" border="0" /></a></div>
+      <div class="span2" align="center"><a href="http://mysql.com"><img src="{{ STATIC_URL }}img/mysql.png" alt="Powered by MySQL" width="140" height="70" border="0" /></a></div>
+    </div>
+    {% endblock %}
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="{{ STATIC_URL }}js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+
+  <script src="{{ STATIC_URL }}js/vendor/bootstrap.min.js"></script>
+
+  <script src="{{ STATIC_URL }}js/main.js"></script>
 </body>
 </html>
