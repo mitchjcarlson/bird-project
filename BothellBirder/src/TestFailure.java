@@ -8,5 +8,4 @@ public class TestFailure {
 	public void testFailure() throws Exception {
 	    fail();
 	}
-
 }
