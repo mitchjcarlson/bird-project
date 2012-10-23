@@ -9,7 +9,6 @@ public class BirderGUI {
 		new BirderGUI();
 	}
 
-	
 	//SUPER basic GUI layout to show how a Java GUI looks and interacts. I tried to leave super detailed comments so it could be potentially
 	//easy to add to this GUI without much learning. It is a lot of stacking and adding one thing to something else. Pretty simple however.
 	public BirderGUI()
@@ -52,9 +51,4 @@ public class BirderGUI {
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//stops program if gui is closed
 		f.setVisible(true); //makes it so that the gui is visible 
 	}
-	
-	
-	
-	
-	
 }
