@@ -2,6 +2,8 @@ import java.awt.*;
 
 import javax.swing.*;
 
+import junit.framework.Test;
+
 public class BirderGUI {
 	
 	public static void main(String[] args)
@@ -46,8 +48,6 @@ public class BirderGUI {
 		f.add(bottomText, BorderLayout.SOUTH); //adds my label to show additional info spot
 		f.add(rightText, BorderLayout.EAST); //adds my label to show whatever else we want
 		
-		
-	
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//stops program if gui is closed
 		f.setVisible(true); //makes it so that the gui is visible 
 	}
