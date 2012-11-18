@@ -11,11 +11,12 @@ public class Bird {
 
 	// this is obviously not even close to done, just wanted to play with it a
 	// bit since it's been a year since I used java
-	public Bird(int idNum, String colors, String loc, String description,
-			String pic, String sciName, String sound) {
+	public Bird(int idNum, String name, String colors, String loc,
+			String description, String pic, String sciName, String sound) {
 		birdID = birdID(); // I'm guessing we actually want the birdclass to
 							// provide the num here, and return it? or do we
 							// want to manually set it each time?
+		birdName = name;
 		birdColors = colors;
 		birdLocation = loc; // probably dont want this as a string, just getting
 							// something in here for now
@@ -27,13 +28,16 @@ public class Bird {
 
 	}
 
-	public Bird() {
-		// default constructor, need to have conversations about this
+	public Bird(String name) {
+		// default constructor, need to have conversations about this, what
+		// minimum info etc...
+		birdName = name;
+		birdID = birdID();
 	}
 
 	// for testing purposes
 	public static void main(String[] args) {
-		birdID();
+		System.out.println(birdID());
 	}
 
 	// just a thought, bird id could be time in milliseconds since this should
