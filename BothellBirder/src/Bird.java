@@ -56,16 +56,8 @@ public class Bird {
 	public void setVideo(String videoSet){birdVideo = videoSet;}
 	public String getSound(){ return (birdSound == null) ? "SOUND NOT SET!" : birdSound;}
 	public void setSound(String sound){birdSound = sound;}
-	public String getDescription(){
-		
-	}
-	public String setDescription(){
-		
-	}
-	public String getScientificName(){
-		
-	}
-	public String setScientificName(){
-		
-	}
+	public String getDescription(){ return (birdDescription == null) ? "DESCRIPTION NOT SET!" : birdDescription;}
+	public void setDescription(String description){ birdDescription = description;}
+	public String getScientificName(){ return (birdScientificName == null) ? "SCIENTIFICNAME NOT SET!" : birdScientificName;}
+	public void setScientificName(String scientificName){ birdScientificName = scientificName;}
 }
