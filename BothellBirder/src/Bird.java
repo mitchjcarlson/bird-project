@@ -5,6 +5,7 @@ public class Bird {
 		SUCCESS, FAILURE, UNKNOWN_ERROR;
 	}
 
+	private boolean birdSex; //0 for boy, 1 for girl?
 	private int birdID;
 	private String birdName, birdVideo, birdColors, birdLocation,
 			birdDescription, birdPicture, birdSound, birdScientificName;
