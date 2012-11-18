@@ -25,7 +25,6 @@ public class Bird {
 							// the db?
 		birdScientificName = sciName;
 		birdSound = sound; // same question about pic
-
 	}
 
 	public Bird(String name) {
@@ -56,7 +55,9 @@ public class Bird {
 	}
 
 	public void setName(String nameSet) {
-		birdColors = nameSet;
+		
+		//need to setup a way of checking for duplicates, would we query the DB for this?
+		birdName = nameSet;
 	}
 
 	public String getColor() {
