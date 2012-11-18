@@ -15,6 +15,8 @@ public class BirderGUI {
 	//easy to add to this GUI without much learning. It is a lot of stacking and adding one thing to something else. Pretty simple however.
 	public BirderGUI()
 	{
+		
+		//I forget how to Java
 		//menu including file, options, and search
 		JMenuBar menuBar = new JMenuBar(); //constructs a menu bar
 		JMenu file = new JMenu("File"); //creates the file menu dropdown
