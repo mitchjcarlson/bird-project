@@ -2,23 +2,21 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-
 public class SearchTest {
 	
-	Search search = new Search(" 	bird, 	red 	robin  ");
+	Search searchObj = new Search(" 	bird, 	red 	robin  washington blue");
 
 	@Test
-	public void testSearch() {
-
-		
-		assertEquals("bird", search.get(0));
-		assertEquals("red", search.get(1));
-		assertEquals("robin", search.get(2));
+	public void testGetColors() {
+		String[] expecteds = {"red", "blue"};
+		String[] actuals = searchObj.getColors();
+		assertArrayEquals(expecteds, actuals);		
 	}
-
+	
 	@Test
-	public void testGet() {
-		search.getColor();
-		search.getName();
+	public void testGetLocations() {
+		String[] expecteds = {"washington"};
+		String[] actuals = searchObj.getLocations();
+		assertArrayEquals(expecteds, actuals);	
 	}
 }
