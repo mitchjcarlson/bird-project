@@ -1,6 +1,8 @@
+import java.util.*;
 
 public class Search {
 	
+	private HashMap<String,String> queryValues = new HashMap<String, String>(10);
 	private String[] dbQueryValues;
 	
 	/**Constructor
@@ -12,8 +14,13 @@ public class Search {
 	 * @param initialString:String
 	 */
 	public Search(String initialString) {
-		initialString = initialString.trim();
-		dbQueryValues = initialString.split("[(\\W++)(\\s++)](\\s++)");
+		
+		dbQueryValues = parse(initialString);
+	}
+	
+	public String[] parse(String parseString) {
+		parseString = parseString.trim();
+		return parseString.split("[(\\W++)(\\s++)](\\s++)");
 	}
 	
 	/**Get
