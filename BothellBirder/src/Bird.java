@@ -4,6 +4,8 @@ public class Bird {
 	enum GETSETRETURNSTATUS {
 		SUCCESS, FAILURE, UNKNOWN_ERROR;
 	}
+	
+	// We should have these data members be their own class/objects //
 
 	private boolean birdSex; //0 for boy, 1 for girl?
 	private int birdID;
