@@ -58,22 +58,27 @@ public class MySQL {
 		
 		try {
 			
-			this.connectToDatbase(); 				// Connect to database
+			this.connectToDatbase(); 						// Connect to database
 	
 			_statement = _connect.createStatement();		// States allow to issue SQL queries
 			
 			ResultSet infoGrabbed =  _statement.executeQuery( query );	// Gets the result from a query
 			
-			this.close();							// Close database connection
+			this.close();									// Close database connection
 			
 			return infoGrabbed;
 		
 		}
-		catch( Exception e ){ return null; }			// I am still confused on exceptions
+		catch( Exception e ){ return null; }				// I am still confused on exceptions
 
 	}
 	
-
+	public boolean insertIntoDatabase( String query ) throws SQLException {
+		
+		return false;
+		
+	}
+	
 	
 	// Create a connection to the database
 
