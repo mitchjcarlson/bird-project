@@ -36,29 +36,14 @@ public class MySQL {
 	}
 	
 	
-	// Prints out the physical layout of the database (tables and column names)
-	
-	private void writeMetaData( ResultSet resultSet ) throws SQLException {
-		
-		System.out.println( "The columns in the table are: " );
-		
-		System.out.println( "Table: " + resultSet.getMetaData().getTableName(1) );
-		
-		for( int i = 1; i <= resultSet.getMetaData().getColumnCount(); i++ )
-			
-				System.out.println( "Column " + i + " " + resultSet.getMetaData().getColumnName(i) );
-		
-	}
-	
-	
 	
 	// Grabs information from database
 	
-	public ResultSet grabFromDatabase( String query ) throws SQLException {
+	public ResultSet grabFromDatabase( String query ) throws Exception {
 		
 		try {
 			
-			this.connectToDatbase(); 						// Connect to database
+			this.connectToDatabase(); 						// Connect to database
 	
 			_statement = _connect.createStatement();		// States allow to issue SQL queries
 			
@@ -68,21 +53,65 @@ public class MySQL {
 			
 			return infoGrabbed;
 		
-		}
-		catch( Exception e ){ return null; }				// I am still confused on exceptions
+		} catch( Exception e ){ throw e; }				// I am still confused on exceptions
 
 	}
 	
-	public boolean insertIntoDatabase( String query ) throws SQLException {
+	// Inserts or Updates data in database
+	
+	public boolean insertIntoDatabase( String query ) throws Exception {
 		
-		return false;
+		try {
+			
+			this.connectToDatabase();							// Connect to database
+			
+			_statement = _connect.createStatement();
+			
+			_statement.executeQuery( query );					// Insert into database
+			
+			if( debug )
+				System.out.println("Insert Query Successful");
+			
+			this.close();
+			
+			return true;
+			
+		} catch( Exception e ) { throw e; }
 		
 	}
 	
+	
+	// Debug only
+	// Prints out the columns from a specific table
+		
+	public void printColumns( String tableName ) throws Exception {
+		
+		if( !debug ) return;	// Return if not in debug mode
+		
+		try {
+		
+			this.connectToDatabase();
+			
+			_resultSet = _statement.executeQuery( "SELECT * FROM " + tableName );
+			
+			System.out.println( "The columns in " + _database + " : " + tableName + " are: " );
+			
+			System.out.println( "Table: " + _resultSet.getMetaData().getTableName(1) );
+			
+			for( int i = 1; i <= _resultSet.getMetaData().getColumnCount(); i++ )
+				
+					System.out.println( "Column " + i + " " + _resultSet.getMetaData().getColumnName(i) );
+			
+			this.close();
+		
+		} catch( Exception e ) { throw e; }
+		
+	}
+		
 	
 	// Create a connection to the database
 
-	private void connectToDatbase() throws Exception {
+	private void connectToDatabase() throws Exception {
 		
 		try {
 			
