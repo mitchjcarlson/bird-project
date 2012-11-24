@@ -45,13 +45,13 @@ public class MySQL {
 			Class.forName("com.mysql.jdbc.Driver");				// Load the MySql driver
 			
 			if( debug )
-				System.out.println("JDBC Driver Loaded Successfully!");
+				System.out.println("Debug: JDBC Driver Loaded Successfully!");
 			
 			_connect = DriverManager.getConnection("jdbc:mysql://" + _host + ":" + _port + "/" + 	// Connect to database
 					_database + "?" + "user=" + _username + "&password=" + _password );
 			
 			if( debug )
-				System.out.println("Connection to Database Successful!");
+				System.out.println("Debug: Connection to Database Successful!");
 		
 		}
 		
@@ -66,8 +66,6 @@ public class MySQL {
 	public ResultSet grabFromDatabase( String query ) throws Exception {
 		
 		try {
-			
-			this.connectToDatabase(); 						// Connect to database
 	
 			_statement = _connect.createStatement();		// States allow to issue SQL queries
 			
@@ -81,20 +79,16 @@ public class MySQL {
 	
 	// Inserts or Updates data in database
 	
-	public boolean insertIntoDatabase( String query ) throws Exception {
+	public boolean excecuteUpdate( String query ) throws Exception {
 		
 		try {
-			
-			this.connectToDatabase();							// Connect to database
 			
 			_preparedStatement = _connect.prepareStatement( query );
 			
 			_preparedStatement.executeUpdate();					// Execute the INSERT/DELETE/UPDATE
 			
 			if( debug )
-				System.out.println("Insert Query Successful");
-			
-			this.close();
+				System.out.println("Debug: Query Excecuted Successfully");
 			
 			return true;
 			
@@ -111,8 +105,6 @@ public class MySQL {
 		if( !debug ) return;	// Return if not in debug mode
 		
 		try {
-		
-			this.connectToDatabase();
 			
 			_resultSet = _statement.executeQuery( "SELECT * FROM " + tableName );
 			
@@ -123,8 +115,6 @@ public class MySQL {
 			for( int i = 1; i <= _resultSet.getMetaData().getColumnCount(); i++ )
 				
 					System.out.println( "Column " + i + " " + _resultSet.getMetaData().getColumnName(i) );
-			
-			this.close();
 		
 		} catch( Exception e ) { throw e; }
 		

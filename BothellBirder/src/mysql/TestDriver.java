@@ -51,7 +51,7 @@ public class TestDriver {
 					+ "(birdId, name, scientificName, description, endangeredStatus, sex) "
 					+ "VALUES( default, '" + name + "', '" + scientificName + "', '" + description + "', 0, 0 )";
 		
-			mysql.insertIntoDatabase( query );
+			mysql.excecuteUpdate( query );
 			
 		} catch( Exception e ) { System.out.println("Error: " + e); }
 		
@@ -65,21 +65,59 @@ public class TestDriver {
 			
 			ResultSet result = mysql.grabFromDatabase(query);		// Grab every bird in db	
 			
-			while( result.next() ) {								// While next set of data exists
+			while( result.next() ) {								// While next set of data exists, print the data
 				
-				System.out.println("birdId: " 			+ result.getInt("birdId") );
+				System.out.println("birdId: " 			+ result.getInt("birdId") );				
 				System.out.println("name: " 			+ result.getString("name") );
 				System.out.println("scientificName: " 	+ result.getString("scientificName") );
 				System.out.println("description: " 		+ result.getString("description") );
 				System.out.println("endangeredStatus: " + result.getInt("endangeredStatus") );
 				System.out.println("sex: " 				+ result.getInt("sex") );
-				System.out.println("_______________________");
-				
-				mysql.close();
+				System.out.println("_______________________________________________");
 				
 			}
+
 			
 		} catch( Exception e ) { System.out.println("Error: " + e); }
+		
+		
+		
+		// ----------- REMOVE ROWS (remove birds) --------- //
+		
+		try {
+			
+			String query = "DELETE FROM bird WHERE name='" + name + "'";
+			
+			mysql.excecuteUpdate(query);
+			
+		} catch( Exception e ) { System.out.println("Error: " + e); }
+		
+		
+		// ------------- CHECK REMOVED ----------------- //
+		
+		try {
+			
+			String query = "SELECT * from bird";
+			
+			ResultSet result = mysql.grabFromDatabase(query);		// Grab every bird in db	
+			
+			if( !result.next() )
+				
+				System.out.println( name + " not found.  (successful removal)");
+			
+			else
+				
+				System.out.println("Could not remove");
+
+			
+		} catch( Exception e ) { System.out.println("Error: " + e); }
+		
+		
+		
+		// --------- CLOSE DATABASE CONNECTION ----- //
+		
+		
+		mysql.close();
 
 	}
 
