@@ -27,11 +27,11 @@ public class MySQL {
 
 	public MySQL( String host, int port, String database, String username, String password ) {
 
-		_host = 	host;
-		_port = 	port;
-		_database = database;
-		_username = username;
-		_password = password;
+		_host 		= host;
+		_port		= port;
+		_database 	= database;
+		_username 	= username;
+		_password 	= password;
 
 	}
 	

@@ -46,6 +46,8 @@ public class Bird {
 	// never be repeated?
 	// or do we want a unique DB entry identifier num?
 	// Drew, can the DB assign the ID?
+		// Yeah, the db is set to auto-increment the bridId field.
+		// This means no id should ever be the same.
 	private static int birdID() {
 		Calendar now = Calendar.getInstance();
 		int time = (int) now.getTimeInMillis();
@@ -60,6 +62,8 @@ public class Bird {
 	public void setName(String nameSet) {
 		
 		//need to setup a way of checking for duplicates, would we query the DB for this?
+			// Don't worry about that here.  When an entire bird object is passed into the mysql
+			// class, I will have it check for dups before inserting
 		birdName = nameSet;
 	}
 
