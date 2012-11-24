@@ -37,7 +37,7 @@ public class MySQL {
 	
 	
 	
-	// Grabs information from database
+	// Grabs information from database 
 	
 	public ResultSet grabFromDatabase( String query ) throws Exception {
 		
