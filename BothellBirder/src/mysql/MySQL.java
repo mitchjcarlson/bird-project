@@ -12,7 +12,7 @@ import java.sql.Statement;
 
 public class MySQL {
 
-	protected static boolean 	debug;
+	protected static boolean 	debug = true;
 
 	protected Connection 		_connect;
 	protected Statement 		_statement;
@@ -20,12 +20,12 @@ public class MySQL {
 	protected ResultSet			_resultSet;
 
 	protected String _host;					// Host address
-	protected String _port;					// Host address port
+	protected int 	 _port;					// Host address port
 	protected String _database;				// Database name
 	protected String _username;				// Database username
 	protected String _password;				// Username password
 
-	public MySQL( String host, String port, String database, String username, String password ) {
+	public MySQL( String host, int port, String database, String username, String password ) {
 
 		_host = 	host;
 		_port = 	port;
@@ -35,6 +35,30 @@ public class MySQL {
 
 	}
 	
+	
+	// Create a connection to the database
+
+	public void connectToDatabase() throws Exception {
+		
+		try {
+			
+			Class.forName("com.mysql.jdbc.Driver");				// Load the MySql driver
+			
+			if( debug )
+				System.out.println("JDBC Driver Loaded Successfully!");
+			
+			_connect = DriverManager.getConnection("jdbc:mysql://" + _host + ":" + _port + "/" + 	// Connect to database
+					_database + "?" + "user=" + _username + "&password=" + _password );
+			
+			if( debug )
+				System.out.println("Connection to Database Successful!");
+		
+		}
+		
+		catch( Exception e ) { throw e; } 
+
+	}
+		
 	
 	
 	// Grabs information from database 
@@ -48,8 +72,6 @@ public class MySQL {
 			_statement = _connect.createStatement();		// States allow to issue SQL queries
 			
 			ResultSet infoGrabbed =  _statement.executeQuery( query );	// Gets the result from a query
-			
-			this.close();									// Close database connection
 			
 			return infoGrabbed;
 		
@@ -65,9 +87,9 @@ public class MySQL {
 			
 			this.connectToDatabase();							// Connect to database
 			
-			_statement = _connect.createStatement();
+			_preparedStatement = _connect.prepareStatement( query );
 			
-			_statement.executeQuery( query );					// Insert into database
+			_preparedStatement.executeUpdate();					// Execute the INSERT/DELETE/UPDATE
 			
 			if( debug )
 				System.out.println("Insert Query Successful");
@@ -108,30 +130,6 @@ public class MySQL {
 		
 	}
 		
-	
-	// Create a connection to the database
-
-	private void connectToDatabase() throws Exception {
-		
-		try {
-			
-			Class.forName("com.mysql.jdbc.Driver");				// Load the MySql driver
-			
-			if( debug )
-				System.out.println("JDBC Driver Loaded Successfully!");
-			
-			_connect = DriverManager.getConnection("jdbc:mysql://" + _host + ":" + _port + "/" + 	// Connect to database
-					_database + "?" + "user=" + _username + "&password=" + _password );
-			
-			if( debug )
-				System.out.println("Connection to Database Successful!");
-		
-		}
-		
-		catch( Exception e ) { throw e; } 
-
-	}
-	
 	
 	protected void close() {
 
