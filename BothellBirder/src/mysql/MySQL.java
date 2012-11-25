@@ -62,13 +62,13 @@ public class MySQL {
 		
 		try {
 	
-			_statement = _connect.createStatement();		// States allow to issue SQL queries
+			_statement = _connect.createStatement();	// States allow to issue SQL queries
 			
-			_statement.executeQuery( query );	// Gets the result from a query
+			ResultSet r = _statement.executeQuery( query );			// Gets the result from a query
 			
-			return _resultSet;
+			return r;
 		
-		} catch( Exception e ){ throw e; }				// I am still confused on exceptions
+		} catch( Exception e ){ throw e; }
 
 	}
 	
@@ -111,7 +111,7 @@ public class MySQL {
 				
 					System.out.println( "Column " + i + " " + _resultSet.getMetaData().getColumnName(i) );
 		
-		} catch( Exception e ) { throw e; }
+		} catch (Exception e) { throw e; }
 		
 	}
 		
@@ -134,9 +134,17 @@ public class MySQL {
 
 				_connect.close();
 
-		} catch (Exception e) {
-
-		}
+		} catch(Exception e) { }
+	}
+	
+	protected void handleException( Exception e ) {
+		
+		// TODO: log exceptions into some kind of file
+		
+		System.out.println();
+		System.out.println("Error: " + e);
+		System.out.println();
+		
 	}
 
 }

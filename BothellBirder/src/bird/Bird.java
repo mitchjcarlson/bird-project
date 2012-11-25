@@ -17,30 +17,23 @@ public class Bird {
 
 	// this is obviously not even close to done, just wanted to play with it a
 	// bit since it's been a year since I used java
-	public Bird(int idNum, String name, String colors, String loc,
+	public Bird(int id, String name, String colors, String loc,
 			String description, String pic, String sciName, String sound) {
-		birdID = birdID(); // I'm guessing we actually want the birdclass to
-							// provide the num here, and return it? or do we
-							// want to manually set it each time?
+		
+		birdID = id; 
 		birdName = name;
 		birdColors = colors;
-		birdLocation = loc; // probably dont want this as a string, just getting
-							// something in here for now
+		birdLocation = loc; 			// probably dont want this as a string, just getting something in here for now
 		birdDescription = description;
-		birdPicture = pic; // how are we going to store pics? Just as a loc in
-							// the db?
+		birdPicture = pic; 				// this should be a physical image
 		birdScientificName = sciName;
-		birdSound = sound; // same question about pic
-	}
-
-	public Bird(String name) {
-		// default constructor, need to have conversations about this, what
-		// minimum info etc...
-		birdName = name;
-		birdID = birdID();
+		birdSound = sound; 				// should be a physical .wav file
+		
 	}
 	
 	public Bird() {
+		// We should be able to create an empty object
+		// since we aren't necessarily adding it to the database
 	}
 
 	// for testing purposes
@@ -60,6 +53,8 @@ public class Bird {
 		int time = (int) now.getTimeInMillis();
 		return time;
 	}
+	
+	// -------- GETTERS / SETTERS ----------------- //
 
 	public int getId() {
 		return birdID;
@@ -69,8 +64,6 @@ public class Bird {
 		birdID = id;
 	}
 	
-
-	// getters and setters
 	public String getName() {
 		return (birdName == null) ? "NAME NOT SET!" : birdName;
 	}

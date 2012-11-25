@@ -41,7 +41,10 @@ public class TalkToDatabase extends MySQL {
 			
 			return bird;
 			
-		} catch( Exception e ) { return null; }
+		} catch( Exception e ) {
+			logError(e);
+			return null; 
+		}
 		
 	}
 	
@@ -63,7 +66,10 @@ public class TalkToDatabase extends MySQL {
 			
 			return bird;
 			
-		} catch( Exception e ) { return null; }
+		} catch( Exception e ) { 
+			logError(e);
+			return null;
+		}
 		
 	}
 	
@@ -85,7 +91,10 @@ public class TalkToDatabase extends MySQL {
 			
 			return bird;
 			
-		} catch( Exception e ) { return null; }
+		} catch( Exception e ) { 
+			logError(e);
+			return null; 
+		}
 		
 	}
 	
@@ -105,7 +114,10 @@ public class TalkToDatabase extends MySQL {
 			
 			return birdList;
 			
-		} catch( Exception e ) { return null; }
+		} catch( Exception e ) { 
+			logError(e);
+			return null; 
+		}
 		
 	}
 	
@@ -125,7 +137,10 @@ public class TalkToDatabase extends MySQL {
 			
 			return birdList;
 			
-		} catch( Exception e ) { return null; }
+		} catch( Exception e ) {
+			logError(e);
+			return null; 
+		}
 		
 	}
 	
@@ -145,22 +160,36 @@ public class TalkToDatabase extends MySQL {
 			
 			return excecuteUpdate( query );
 			
-		} catch( Exception e ) { return false; }
+		} catch( Exception e ) { 
+			logError(e);
+			return false; 
+		}
 		
 	}
 	
 	public boolean deleteBirdById( int id ) {
 		
-		
-		
-		return false;
-		
+		try {
+			
+			if( !birdExists( id ) ) return false;				// Bird does not exist to remove
+			
+			String query = "DELETE FROM bird WHERE id=" + id;	
+				
+			excecuteUpdate(query);								// Remove the bird
+			
+			return true;
+			
+		} catch( Exception e ) { 
+			logError(e);
+			return false;
+		}
+
 	}
 	
 	
-	public boolean birdExists( String name ) {
+	public boolean birdExists( int id ) {
 		
-		String query = "SELECT * FROM bird WHERE name=" + name;
+		String query = "SELECT * FROM bird WHERE id=" + id;
 		
 		try {
 		
@@ -168,7 +197,26 @@ public class TalkToDatabase extends MySQL {
 			
 			return result.next();
 		
-		} catch( Exception e ) { return false; }
+		} catch( Exception e ) { 	
+			logError(e);	
+			return false;	
+		}
+		
+	}
+	public boolean birdExists( String name ) {
+		
+		String query = "SELECT * FROM bird WHERE name='" + name + "'";
+		
+		try {
+		
+			ResultSet result = grabFromDatabase( query );
+			
+			return result.next();
+		
+		} catch( Exception e ) { 	
+			logError(e);	
+			return false;	
+		}
 		
 	}
 	
@@ -192,7 +240,10 @@ public class TalkToDatabase extends MySQL {
 			
 			return bird;
 		
-		} catch( Exception e ) { return null; }
+		} catch( Exception e ) { 	
+			logError(e);	
+			return null; 
+		}
 		
 	}
 	
@@ -213,6 +264,16 @@ public class TalkToDatabase extends MySQL {
 		} catch( Exception e ) {}
 		
 		return birdList;
+		
+	}
+	
+	private void logError( Exception e ) {
+		
+		// TODO: implement logging into a file
+		
+		System.out.println();
+		System.out.println("Error: " + e.getMessage());
+		System.out.println();
 		
 	}
 
