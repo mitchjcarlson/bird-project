@@ -1,3 +1,4 @@
+
 import java.util.Calendar;
 
 public class Bird {
@@ -6,9 +7,11 @@ public class Bird {
 	}
 	
 	// We should have these data members be their own class/objects //
-
-	private boolean birdSex; //0 for boy, 1 for girl?
+	
 	private int birdID;
+	
+	private boolean birdSex, endangeredStatus; //0 for boy, 1 for girl?
+	
 	private String birdName, birdVideo, birdColors, birdLocation,
 			birdDescription, birdPicture, birdSound, birdScientificName;
 
@@ -36,6 +39,9 @@ public class Bird {
 		birdName = name;
 		birdID = birdID();
 	}
+	
+	public Bird() {
+	}
 
 	// for testing purposes
 	public static void main(String[] args) {
@@ -48,11 +54,21 @@ public class Bird {
 	// Drew, can the DB assign the ID?
 		// Yeah, the db is set to auto-increment the bridId field.
 		// This means no id should ever be the same.
+
 	private static int birdID() {
 		Calendar now = Calendar.getInstance();
 		int time = (int) now.getTimeInMillis();
 		return time;
 	}
+
+	public int getId() {
+		return birdID;
+	}
+	
+	public void setId( int id ) {
+		birdID = id;
+	}
+	
 
 	// getters and setters
 	public String getName() {
@@ -125,5 +141,21 @@ public class Bird {
 
 	public void setScientificName(String scientificName) {
 		birdScientificName = scientificName;
+	}
+	
+	public boolean getEndangeredStatus() {
+		return endangeredStatus;
+	}
+	
+	public void setEndangeredStatus( boolean eS ) {
+		endangeredStatus = eS;
+	}
+	
+	public boolean getSex() {
+		return birdSex;
+	}
+	
+	public void setSex( boolean s ) {
+		birdSex = s;
 	}
 }
