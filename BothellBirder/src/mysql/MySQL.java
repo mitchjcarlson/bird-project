@@ -3,12 +3,7 @@ package mysql;
 // Based on Tutorial at:
 //http://www.vogella.com/articles/MySQLJava/article.html
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class MySQL {
 
@@ -69,9 +64,9 @@ public class MySQL {
 	
 			_statement = _connect.createStatement();		// States allow to issue SQL queries
 			
-			ResultSet infoGrabbed =  _statement.executeQuery( query );	// Gets the result from a query
+			_statement.executeQuery( query );	// Gets the result from a query
 			
-			return infoGrabbed;
+			return _resultSet;
 		
 		} catch( Exception e ){ throw e; }				// I am still confused on exceptions
 
