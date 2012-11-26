@@ -23,6 +23,9 @@ public class TalkToDatabase extends MySQL {
 	}
 
 	
+	// Retuns a single bird object with the ID passed in
+	// Returns null if no match was found
+	
 	public Bird getBirdById( int id ) {
 		
 		String query = "SELECT * FROM bird WHERE birdId=" + id;
@@ -47,6 +50,9 @@ public class TalkToDatabase extends MySQL {
 		}
 		
 	}
+	
+	// Retuns a single bird object with the name name passed in
+	// Returns null if no match was found
 	
 	public Bird getBirdByName( String name ) {
 		
@@ -73,6 +79,11 @@ public class TalkToDatabase extends MySQL {
 		
 	}
 	
+	
+	
+	// Retuns a single bird object with the scientific name passed in
+	// Returns null if no match was found
+	
 	public Bird getBirdByScientificName( String sciName ) {
 		
 		String query = "SELECT * FROM bird WHERE scientificName=" + sciName;
@@ -98,6 +109,11 @@ public class TalkToDatabase extends MySQL {
 		
 	}
 	
+	
+	
+	// Returns an ArrayList of bird objects that match the endangered status passed in
+	// Returns null if no match was found
+	
 	public ArrayList<Bird> getBirdsByEndangeredStatus( boolean endangered ) {
 		
 		String query = "SELECT * FROM bird WHERE endangeredStatus=" + endangered;
@@ -120,6 +136,11 @@ public class TalkToDatabase extends MySQL {
 		}
 		
 	}
+	
+	
+	
+	// Returns an ArrayList of bird objects that match the sex passed in
+	// Returns null if no match was found
 	
 	public ArrayList<Bird> getBirdsBySex( boolean sex ) {
 		
@@ -144,9 +165,12 @@ public class TalkToDatabase extends MySQL {
 		
 	}
 	
+	// Adds a bird to the database if it's name does not exist
+	
 	public boolean addNewBird( Bird bird ) {
 		
 		// TODO: Implement add locations, colors, image, sound, etc...
+		// TODO: Should multiple sciNames be allowed?
 		
 		if( birdExists( bird.getName() ) ) return false;		// If bird already exists
 		
@@ -167,6 +191,8 @@ public class TalkToDatabase extends MySQL {
 		
 	}
 	
+	// Deletes a bird based on the id passed in
+	
 	public boolean deleteBirdById( int id ) {
 		
 		try {
@@ -186,6 +212,7 @@ public class TalkToDatabase extends MySQL {
 
 	}
 	
+	// Checks if a bird exists with the passed in ID
 	
 	public boolean birdExists( int id ) {
 		
@@ -203,6 +230,9 @@ public class TalkToDatabase extends MySQL {
 		}
 		
 	}
+	
+	// Checks if a bird exists wit the passed in name
+	
 	public boolean birdExists( String name ) {
 		
 		String query = "SELECT * FROM bird WHERE name='" + name + "'";
