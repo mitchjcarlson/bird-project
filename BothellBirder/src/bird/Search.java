@@ -42,7 +42,7 @@ public class Search {
 	 * @param parseString
 	 * @return array of strings
 	 */
-	public String[] parse(String parseString) {
+	private String[] parse(String parseString) {
 		// whitespace OR (comma AND whitespace) OR comma
 		String regEx = "\\s+|,\\s+|,";
 		return parseString.trim().toLowerCase().split(regEx);
@@ -71,7 +71,7 @@ public class Search {
 	 * @param token is checked against the current color list
 	 * @return True if token is in color list
 	 */
-	public boolean is(String[] library, String token) {
+	private boolean is(String[] library, String token) {
 		for(int i = 0; i < library.length; i++) {
 			if(token.equals(library[i])) {
 				return true;
