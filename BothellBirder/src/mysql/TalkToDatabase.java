@@ -1,9 +1,7 @@
 package mysql;
 
 import java.sql.*;
-
 import java.util.ArrayList;
-
 import bird.Bird;
 
 public class TalkToDatabase extends MySQL {
@@ -56,7 +54,7 @@ public class TalkToDatabase extends MySQL {
 	
 	public Bird getBirdByName( String name ) {
 		
-		String query = "SELECT * FROM bird WHERE name=" + name;
+		String query = "SELECT * FROM bird WHERE name='" + name + "'";
 		
 		try {
 			
@@ -86,7 +84,7 @@ public class TalkToDatabase extends MySQL {
 	
 	public Bird getBirdByScientificName( String sciName ) {
 		
-		String query = "SELECT * FROM bird WHERE scientificName=" + sciName;
+		String query = "SELECT * FROM bird WHERE scientificName='" + sciName + "'";
 		
 		try {
 			
@@ -114,7 +112,7 @@ public class TalkToDatabase extends MySQL {
 	// Returns an ArrayList of bird objects that match the endangered status passed in
 	// Returns null if no match was found
 	
-	public ArrayList<Bird> getBirdsByEndangeredStatus( boolean endangered ) {
+	public ArrayList<Bird> getBirdsByEndangeredStatus( int endangered ) {
 		
 		String query = "SELECT * FROM bird WHERE endangeredStatus=" + endangered;
 		
@@ -142,7 +140,7 @@ public class TalkToDatabase extends MySQL {
 	// Returns an ArrayList of bird objects that match the sex passed in
 	// Returns null if no match was found
 	
-	public ArrayList<Bird> getBirdsBySex( boolean sex ) {
+	public ArrayList<Bird> getBirdsBySex( int sex ) {
 		
 		String query = "SELECT * FROM bird WHERE sex=" + sex;
 		
@@ -172,7 +170,17 @@ public class TalkToDatabase extends MySQL {
 		// TODO: Implement add locations, colors, image, sound, etc...
 		// TODO: Should multiple sciNames be allowed?
 		
-		if( birdExists( bird.getName() ) ) return false;		// If bird already exists
+		try {
+
+			this.connectToDatabase();
+			
+			if( birdExists( bird.getName() ) ) return false;		// If bird already exists
+			
+		} catch( Exception e ) {
+			logError(e);
+			return false;
+		}
+		
 		
 		String query 	= "INSERT INTO bird " +
 						"(birdId, name, scientificName, description, endangeredStatus, sex) " +
@@ -199,7 +207,27 @@ public class TalkToDatabase extends MySQL {
 			
 			if( !birdExists( id ) ) return false;				// Bird does not exist to remove
 			
-			String query = "DELETE FROM bird WHERE id=" + id;	
+			String query = "DELETE FROM bird WHERE birdId=" + id;	
+				
+			excecuteUpdate(query);								// Remove the bird
+			
+			return true;
+			
+		} catch( Exception e ) { 
+			logError(e);
+			return false;
+		}
+
+	}
+	public boolean deleteBirdByName( String name ) {
+		
+		try {
+			
+			this.connectToDatabase();
+			
+			if( !birdExists( name ) ) return false;				// Bird does not exist to remove
+			
+			String query = "DELETE FROM bird WHERE NAME='" + name + "'";	
 				
 			excecuteUpdate(query);								// Remove the bird
 			
@@ -212,11 +240,12 @@ public class TalkToDatabase extends MySQL {
 
 	}
 	
+	
 	// Checks if a bird exists with the passed in ID
 	
 	public boolean birdExists( int id ) {
 		
-		String query = "SELECT * FROM bird WHERE id=" + id;
+		String query = "SELECT * FROM bird WHERE birdId=" + id;
 		
 		try {
 		
@@ -251,7 +280,6 @@ public class TalkToDatabase extends MySQL {
 	}
 	
 	
-	// TODO: Set rests of Bird class variables
 	
 	private Bird createBirdObject( ResultSet result ) {
 		
@@ -263,8 +291,8 @@ public class TalkToDatabase extends MySQL {
 			bird.setName( 				result.getString( "name" ) );
 			bird.setScientificName( 	result.getString( "scientificName" ) );
 			bird.setDescription( 		result.getString( "description" ) );
-			bird.setEndangeredStatus( 	result.getBoolean( "endangeredStatus" ) );
-			bird.setSex( 				result.getBoolean( "sex" ) );
+			bird.setEndangeredStatus( 	result.getInt( "endangeredStatus" ) );
+			bird.setSex( 				result.getInt( "sex" ) );
 			
 			// TODO: Set rests of Bird class variables
 			

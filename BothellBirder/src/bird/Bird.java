@@ -10,27 +10,36 @@ public class Bird {
 	
 	private int birdID;
 	
-	private boolean birdSex, endangeredStatus; //0 for boy, 1 for girl?
+	private int birdSex, endangeredStatus; //0 for boy, 1 for girl?
 	
 	private String birdName, birdVideo, birdColors, birdLocation,
 			birdDescription, birdPicture, birdSound, birdScientificName;
 
 	// this is obviously not even close to done, just wanted to play with it a
 	// bit since it's been a year since I used java
-	public Bird(int id, String name, String colors, String loc,
-			String description, String pic, String sciName, String sound) {
+	public Bird(int id, String name, String sciName, String description, int endangered, 
+			int sex, String colors, String loc, String pic, String sound) {
 		
 		birdID = id; 
 		birdName = name;
+		birdScientificName = sciName;
+		birdDescription = description;
+		endangeredStatus = endangered;
+		birdSex = sex;
 		birdColors = colors;
 		birdLocation = loc; 			// probably dont want this as a string, just getting something in here for now
-		birdDescription = description;
 		birdPicture = pic; 				// this should be a physical image
-		birdScientificName = sciName;
 		birdSound = sound; 				// should be a physical .wav file
 		
 	}
 	
+	// Constructor: Load basic info for inserting into database
+	public Bird( int id, String name, String sciName, String description, int endangered, int sex ) {
+		
+		this(id, name, sciName, description, endangered, sex, "", "", "", "");
+	}
+	
+	// Constructor: Default empty bird
 	public Bird() {
 		// We should be able to create an empty object
 		// since we aren't necessarily adding it to the database
@@ -136,19 +145,19 @@ public class Bird {
 		birdScientificName = scientificName;
 	}
 	
-	public boolean getEndangeredStatus() {
+	public int getEndangeredStatus() {
 		return endangeredStatus;
 	}
 	
-	public void setEndangeredStatus( boolean eS ) {
+	public void setEndangeredStatus( int eS ) {
 		endangeredStatus = eS;
 	}
 	
-	public boolean getSex() {
+	public int getSex() {
 		return birdSex;
 	}
 	
-	public void setSex( boolean s ) {
+	public void setSex( int s ) {
 		birdSex = s;
 	}
 }

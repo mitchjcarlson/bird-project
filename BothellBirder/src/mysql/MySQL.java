@@ -7,7 +7,7 @@ import java.sql.*;
 
 public class MySQL {
 
-	protected static boolean 	debug = true;
+	protected static boolean 	debug = false;
 
 	protected Connection 		_connect;
 	protected Statement 		_statement;
@@ -62,7 +62,7 @@ public class MySQL {
 		
 		try {
 	
-			_statement = _connect.createStatement();	// States allow to issue SQL queries
+			_statement = _connect.createStatement();				// States allow to issue SQL queries
 			
 			ResultSet r = _statement.executeQuery( query );			// Gets the result from a query
 			
